@@ -8,7 +8,9 @@
 <script setup>
 // const { data: count } = await useFetch('/api/count')
 async function cek () {
-  const data = await useFetch('/api/province')
-  console.log('data', data)
+  const axios = useNuxtApp().$axios
+  // const data = await useFetch('/api/province')
+  const data = await axios.get('/api/province')
+  console.log('dataku', data)
 }
 </script>
