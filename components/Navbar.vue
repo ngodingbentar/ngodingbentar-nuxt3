@@ -35,7 +35,6 @@ import IconHome from '@carbon/icons-vue/es/home/24'
 const props  = defineProps({ route: { type: String, required: false, default: '/' }, enable: { type: Boolean, required: false, default: true } })
 
 const mainStore = useMainStore()
-
 const { state } = storeToRefs(mainStore)
 const isSetting = ref(false)
 const loadingTheme = computed(() => state.value.loadingTheme)
