@@ -9,8 +9,7 @@
               {{ title }}
             </div>
             <div class="close" @click="closeModal">
-              <!-- <fa :icon="['far', 'times']" class="icon" /> -->
-              <!-- <font-awesome-icon class="iconTheme" :icon="['fas', 'times']" /> -->
+              <IconClose />
             </div>
           </slot>
         </div>
@@ -26,58 +25,42 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
+import IconClose from '@carbon/icons-vue/es/close/24'
 
-export default defineComponent({
-  name: 'AppModal',
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    size: {
-      type: String,
-      default: 'small',
-    },
-    showHeader: {
-      type: Boolean,
-      default: true,
-    },
-    theme: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props, { emit }) {
-    const modalElement = ref<HTMLElement | null>(null)
-
-    onMounted(() => {
-      disableBodyScroll(modalElement.value as HTMLElement, {
-        reserveScrollBarGap: true,
-        allowTouchMove: (el: any) => {
-          while (el && el !== document.body) {
-            if (el.getAttribute('body-scroll-lock-ignore') !== null) {
-              return true
-            }
-            el = el.parentNode as HTMLElement
-          }
-        },
-      })
-    })
-
-    onBeforeUnmount(() => {
-      enableBodyScroll(modalElement.value as HTMLElement)
-      clearAllBodyScrollLocks()
-    })
-
-    return { modalElement, closeModal }
-
-    function closeModal() {
-      emit('close')
-    }
-  },
+const props = defineProps({
+  title: { type: String, default: '' },
+  size: { type: String, default: 'small' },
+  showHeader: { type: Boolean, default: true },
+  theme: { type: Object, required: true }
 })
+
+const emit         = defineEmits(['close'])
+const modalElement = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  disableBodyScroll(modalElement.value as HTMLElement, {
+    reserveScrollBarGap: true,
+    allowTouchMove: (el: any) => {
+      while (el && el !== document.body) {
+        if (el.getAttribute('body-scroll-lock-ignore') !== null) {
+          return true
+        }
+        el = el.parentNode as HTMLElement
+      }
+    },
+  })
+})
+
+onBeforeUnmount(() => {
+  enableBodyScroll(modalElement.value as HTMLElement)
+  clearAllBodyScrollLocks()
+})
+
+function closeModal() {
+  emit('close')
+}
 </script>
 
 <style lang="postcss" scoped>
