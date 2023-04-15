@@ -109,9 +109,7 @@ function closeModal() {
   }
 }
 
-/* @screen mobile */
-
-@screen sm {
+@screen mobile {
   .modal-wrapper {
     .modal-dialog {
       @apply absolute bottom-0 px-0 mb-0;

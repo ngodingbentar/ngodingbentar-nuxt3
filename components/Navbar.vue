@@ -37,18 +37,12 @@ const props  = defineProps({ route: { type: String, required: false, default: '/
 const mainStore = useMainStore()
 
 const { state } = storeToRefs(mainStore)
-console.log('state', state.value.loadingTheme)
-
 const isSetting = ref(false)
 const loadingTheme = computed(() => state.value.loadingTheme)
 const storeTheme = computed(() => state.value.theme)
 
-function cek () {
-  console.log(props)
-}
 function closeModal () {
   isSetting.value = false
-  console.log('isSetting', isSetting.value)
 }
 function doSetting () {
   isSetting.value = true
@@ -95,18 +89,12 @@ function doSetting () {
     @apply flex items-center;
   }
 
-  .end {
-    /* @apply grid grid-flow-col gap-4; */
-  }
-
   .line {
     @apply block w-px opacity-50 mr-3;
     height: 32px;
   }
 }
 
-@screen sm {
-}
 @screen md {
   .app-header {
     @apply flex-shrink-0;
