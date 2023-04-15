@@ -43,9 +43,9 @@ const isSetting = ref(false)
 const loadingTheme = computed(() => state.value.loadingTheme)
 const storeTheme = computed(() => state.value.theme)
 
-// function cek () {
-//   console.log(props)
-// }
+function cek () {
+  console.log(props)
+}
 // function closeModal () {
 //   isSetting.value = false
 // }
