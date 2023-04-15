@@ -19,9 +19,9 @@
           <IconSettings />
         </button>
       </div>
-      <!-- <Transition name="drawer">
+      <Transition name="drawer">
         <Setting v-if="isSetting" :theme="storeTheme" @close="closeModal" />
-      </Transition> -->
+      </Transition>
     </div>
   </div>
 </template>
@@ -46,9 +46,10 @@ const storeTheme = computed(() => state.value.theme)
 function cek () {
   console.log(props)
 }
-// function closeModal () {
-//   isSetting.value = false
-// }
+function closeModal () {
+  isSetting.value = false
+  console.log('isSetting', isSetting.value)
+}
 function doSetting () {
   isSetting.value = true
 }
@@ -73,7 +74,7 @@ function doSetting () {
 
 @font-face {
   font-family: "lpmq";
-  src: url(/fonts/lpmq.otf) format("opentype");
+  src: url('@/assets/fonts/lpmq.otf') format("opentype");
   font-display: swap;
 }
 .font-arabic{
