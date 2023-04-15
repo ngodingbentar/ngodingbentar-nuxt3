@@ -1,15 +1,12 @@
 <template>
-  <div><button @click="cek">cek</button></div>
-  <h1 class="text-3xl font-bold underline text-blue-400">
-    Hello world! <IconChevronDown />
-  </h1>
+  <Navbar :enable="false" />
 </template>
 
 <script setup>
-import IconChevronDown from '@carbon/icons-vue/es/chevron--down/16'
-import { mainStore } from '@/stores/main'
+// import IconChevronDown from '@carbon/icons-vue/es/chevron--down/16'
+import { useMainStore } from '@/stores/main'
 
-const main       = mainStore()
+const main       = useMainStore()
 
 async function cek () {
   main.setToken('12345')
