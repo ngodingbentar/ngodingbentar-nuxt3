@@ -7,11 +7,14 @@
 
 <script setup>
 import IconChevronDown from '@carbon/icons-vue/es/chevron--down/16'
+import { mainStore } from '@/stores/main'
+
+const main       = mainStore()
 
 async function cek () {
-  const axios = useNuxtApp().$axios
-  // const data = await useFetch('/api/province')
-  const data = await axios.get('/api/province')
-  console.log('dataku', data)
+  main.setToken('12345')
+  // const axios = useNuxtApp().$axios
+  // const data = await axios.get('/api/province')
+  // console.log('dataku', data)
 }
 </script>
