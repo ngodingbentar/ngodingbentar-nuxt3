@@ -4,13 +4,27 @@
     <div class="agama">
       <div v-if="!loadingTheme" class="main" :style="{ background: storeTheme.background, color: storeTheme.color, boxShadow: storeTheme.boxShadow }">
         <div class="container" :class="bgId">
-          <AgamaCard to="/agama/surah" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/quran2.png" />
-          <AgamaCard to="/agama/asmaul-husna" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/allah.png" />
-          <AgamaCard to="/agama/doa-harian" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/praying.png" />
-          <AgamaCard to="/agama/tahlil" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/pray.png" />
-          <AgamaCard to="/agama/wirid" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/beads.png" />
-          <AgamaCard to="/agama/jadwal-shalat" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/shalat/pray.png" />
-          <AgamaCard to="/agama/kisah" :boxShadow="storeTheme.boxShadow" src="/_nuxt/assets/images/muhammad.png" />
+          <AgamaCard to="/agama/surah" title="Daftar Surah" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/quran2.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/asmaul-husna" title="Asmaul Husna" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/allah.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/doa-harian" title="Doa Harian" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/praying.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/tahlil" title="Doa Tahlil" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/pray.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/wirid" title="Wirid" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/beads.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/jadwal-shalat" title="Jadwal Shalat" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/shalat/pray.png" alt="https://www.freepik.com" />
+          </AgamaCard>
+          <AgamaCard to="/agama/kisah" title="Kisah Nabi & Rasul" :boxShadow="storeTheme.boxShadow">
+            <img class="m-auto" src="@/assets/images/muhammad.png" alt="https://www.freepik.com" />
+          </AgamaCard>
         </div>
         <div class="footer"></div>
       </div>

@@ -1,8 +1,9 @@
 <template>
   <nuxt-link to="/agama/surah" class="box" :style="{ boxShadow: boxShadow }">
     <div class="content items-center">
-      <img class="m-auto" :src="src" alt="https://www.freepik.com" />
-      <p>Daftar Surah</p>
+      <!-- <img class="m-auto" :src="src" alt="https://www.freepik.com" /> -->
+      <slot />
+      <p>{{ title }}</p>
     </div>
   </nuxt-link>
 </template>
@@ -13,11 +14,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  boxShadow: {
+  title: {
     type: String,
     required: true,
   },
-  src: {
+  boxShadow: {
     type: String,
     required: true,
   },
