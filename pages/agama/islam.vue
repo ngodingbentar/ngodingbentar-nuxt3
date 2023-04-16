@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar to="/agama" />
+    <GlobalsNavbar to="/agama" />
     <div class="agama">
       <div v-if="!loadingTheme" class="main" :style="{ background: storeTheme.background, color: storeTheme.color, boxShadow: storeTheme.boxShadow }">
         <div class="container" :class="bgId">
@@ -51,18 +51,6 @@ const bgId = computed(() => {
 </script>
 <style lang="postcss">
 .agama {
-  .darkTheme{
-    /* color: rgb(61, 81, 94); */
-    .box:hover{
-      background: rgb(61, 81, 94);
-    }
-  }
-  .lightTheme{
-    .box:hover {
-      background: #f1f1f1;
-    }
-  }
-  
   .main {
     @apply pt-20 min-h-screen pb-8 flex mt-8 px-40;
     justify-content: center;

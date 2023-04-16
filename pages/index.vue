@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :enable="false" />
+    <GlobalsNavbar :enable="false" />
     <div v-if="!loadingTheme" class="main text-center" :style="{ background: storeTheme.background, color: storeTheme.color }">
       <div class="">
         <div v-if="loading">
@@ -54,17 +54,6 @@ async function cek () {
 </script>
 
 <style lang="postcss" scoped>
-.darkTheme{
-  /* color: rgb(61, 81, 94); */
-  .card:hover{
-    background: rgb(61, 81, 94);
-  }
-}
-.lightTheme{
-  .card:hover {
-    background: #f1f1f1;
-  }
-}
 .main {
   @apply pt-24 min-h-screen pb-8 px-40;
 }
