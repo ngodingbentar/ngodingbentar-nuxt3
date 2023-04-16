@@ -33,10 +33,21 @@
 
           <div v-if="pageOfItems.length === 0" class="text-center text-2xl font-bold mt-16">
             --- Data tidak ditemukan ---
+            <!-- <button @click="cek">cek</button> -->
           </div>
 
-          <div class="text-center py-3">
-            <!-- <jw-pagination :items="allSurah" @changePage="onChangePage" /> -->
+          <div v-if="!loadingNav" class="text-center py-3">
+            <ClientOnly>
+              <!-- <JwPagination :items="allSurah" :pageSize="10" @changePage="onChangePage" /> -->
+              <!-- <jw-pagination @changePage="changePage" :items="allSurah" :pageSize="10" /> -->
+              <!-- <vue-awesome-paginate
+                :total-items="50"
+                :items-per-page="5"
+                :max-pages-shown="5"
+                v-model="currentPage"
+                :on-click="onClickHandler"
+              /> -->
+            </ClientOnly>
           </div>
         </div>
 
@@ -49,10 +60,17 @@
   </span>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 import json from '~/assets/data/surah-info.json'
+// const { $JwPagination } = useNuxtApp()
+
+const onClickHandler = (page) => {
+  console.log(page);
+};
+
+const currentPage = ref(1);
 
 const mainStore = useMainStore()
 
@@ -74,6 +92,26 @@ const bgId = computed(() => {
     return 'lightTheme'
   }
 })
+const loadingNav = ref(true)
+
+onMounted(() => {
+  pageOfItems.value = data.surah_info
+  setTimeout(function () {
+    loadingNav.value = false
+  }, 5000)
+})
+
+onBeforeMount(() => {
+  // console.log('data json', data.surah_info)
+  // console.log('typeof data', typeof data.surah_info, typeof pageOfItems.value)
+  // pageOfItems.value = data.surah_info
+  // console.log('pageOfItems', pageOfItems.value)
+  // onChangePage(allSurah.value)
+})
+
+function cek () {
+  // console.log('cek', $JwPagination)
+}
 
 if (process.browser) {
   window.smoothscroll = () => {
@@ -99,10 +137,13 @@ function doSetting () {
   isSetting.value = true
 }
 
-function onChangePage (data) {
+function changePage (data) {
+  console.log('data', data)
   pageOfItems.value = data
-  window.smoothscroll()
+  console.log('pageOfItems', pageOfItems.value)
+  // window.smoothscroll()
 }
+
 function searchFilter (dataSearch) {
   if (dataSearch === null) {
     dataSearch = ''
@@ -134,7 +175,7 @@ function searchFilter (dataSearch) {
 }
 @font-face {
   font-family: "lpmq";
-  src: url(/fonts/lpmq.otf) format("opentype");
+  src: url('@/assets/fonts/lpmq.otf') format("opentype");
   font-display: swap;
 }
 html {

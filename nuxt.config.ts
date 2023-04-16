@@ -15,6 +15,9 @@ export default defineNuxtConfig({
       'autoprefixer'          : {},
     },
   },
+  plugins: [
+    { src: '@/plugins/pagination.ts', ssr: false },
+  ],
   typescript: {
     tsConfig: {
       compilerOptions: {
