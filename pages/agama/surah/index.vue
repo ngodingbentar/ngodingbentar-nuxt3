@@ -1,8 +1,8 @@
 <template>
   <span>
-    <GlobalsNavbar to="/agama" />
+    <GlobalsNavbar to="/agama/islam" />
     <div v-if="!loadingTheme" class="main" :style="{ background: storeTheme.background, color: storeTheme.color }">
-      <!-- <BackComp :theme="storeTheme" route="/agama" /> -->
+      <AgamaBackComp :theme="storeTheme" route="/agama/islam" />
       <!-- <SearchComp :fields="dataFields" :data="data.surah_info" @search="searchFilter" /> -->
       <div class="item text-center flex justify-between">
         <p class="sum" :style="{ boxShadow: storeTheme.boxShadow }">{{ allSurah.length }} data</p>
