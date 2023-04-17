@@ -2,7 +2,7 @@
   <span>
     <GlobalsNavbar to="/agama/islam" />
     <div v-if="!loadingTheme" class="main" :style="{ background: storeTheme.background, color: storeTheme.color }">
-      <AgamaBackComp :theme="storeTheme" route="/agama/islam" />
+      <GlobalsBackComp :theme="storeTheme" route="/agama/islam" />
       <!-- <SearchComp :fields="dataFields" :data="data.surah_info" @search="searchFilter" /> -->
       <div class="item text-center flex justify-between">
         <p class="sum" :style="{ boxShadow: storeTheme.boxShadow }">{{ allSurah.length }} data</p>
@@ -60,31 +60,31 @@
   </span>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 import json from '~/assets/data/surah-info.json'
 // const { $JwPagination } = useNuxtApp()
 
-const onClickHandler = (page) => {
-  console.log(page);
-};
+// const onClickHandler = (page) => {
+//   console.log(page);
+// };
 
-const currentPage = ref(1);
+// const currentPage = ref(1);
 
 const mainStore = useMainStore()
 
 const { state } = storeToRefs(mainStore)
 const data = json
 const search = ref('')
-const dataFields = { value: 'latin' }
+// const dataFields = { value: 'latin' }
 const allSurah = ref([])
 const pageOfItems = ref([])
 const loading = ref(true)
 const loadingTheme = computed(() => state.value.loadingTheme)
 const storeTheme = computed(() => state.value.theme)
 const isSetting = ref(false)
-const source = 'https://quran.kemenag.go.id'
+// const source = 'https://quran.kemenag.go.id'
 const bgId = computed(() => {
   if (storeTheme.value?.darktheme) {
     return 'darkTheme'
@@ -95,7 +95,7 @@ const bgId = computed(() => {
 const loadingNav = ref(true)
 
 onMounted(() => {
-  pageOfItems.value = data.surah_info
+  pageOfItems.value = data.surah_info as []
   setTimeout(function () {
     loadingNav.value = false
   }, 5000)
@@ -109,9 +109,9 @@ onBeforeMount(() => {
   // onChangePage(allSurah.value)
 })
 
-function cek () {
-  // console.log('cek', $JwPagination)
-}
+// function cek () {
+//   console.log('cek', $JwPagination)
+// }
 
 if (process.browser) {
   window.smoothscroll = () => {
@@ -130,19 +130,19 @@ setTimeout(function () {
 searchFilter(search.value)
 
 
-function closeModal () {
-  isSetting.value = false
-}
-function doSetting () {
-  isSetting.value = true
-}
+// function closeModal () {
+//   isSetting.value = false
+// }
+// function doSetting () {
+//   isSetting.value = true
+// }
 
-function changePage (data) {
-  console.log('data', data)
-  pageOfItems.value = data
-  console.log('pageOfItems', pageOfItems.value)
-  // window.smoothscroll()
-}
+// function changePage (data) {
+//   console.log('data', data)
+//   pageOfItems.value = data
+//   console.log('pageOfItems', pageOfItems.value)
+//   window.smoothscroll()
+// }
 
 function searchFilter (dataSearch) {
   if (dataSearch === null) {
@@ -152,7 +152,7 @@ function searchFilter (dataSearch) {
     const result = data.surah_info.filter(surat =>
       surat.latin.toLowerCase().includes(dataSearch.toLowerCase())
     )
-    allSurah.value = result
+    allSurah.value = result as []
     loading.value = false
   }, 100)
 }
