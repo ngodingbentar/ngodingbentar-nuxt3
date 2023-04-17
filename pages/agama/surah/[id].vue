@@ -3,13 +3,11 @@
     <GlobalsNavbar to="/agama" />
     <div v-if="!loadingTheme" class="main font-arabic" :style="{ background: storeTheme.background, color: storeTheme.color }">
       <div v-if="loading">
-        <!-- <Loading :theme="storeTheme" /> -->
+        <GlobalsLoading :theme="storeTheme" />
       </div>
       <div v-else class="content">
-        <button @click="cek">cek</button>
         <GlobalsBackComp :theme="storeTheme" route="/agama/surah" class="mb-4" />
-        <!-- <Headerquran :surah="surah" :theme="storeTheme" /> -->
-        <!-- <div v-for="(surat, index) in pageOfItems" :key="index" class="item"> -->
+        <AgamaQuranHeaderquran :surah="surah" :theme="storeTheme" />
         <div v-for="(surat, index) in newSurah" :key="index" class="item">
           <AgamaQuranCardcomp
             :theme="storeTheme"
@@ -55,7 +53,6 @@ const pageOfItems = ref([])
 // }
 
 function setAudio (id) {
-  console.log('id', id)
   let data = ref('')
   let idSuray = ref('')
   if (id.length === 1) {
@@ -74,26 +71,19 @@ function setAudio (id) {
     idSuray.value = idParams.toString()
   }
   const result = ref(`https://quran.kemenag.go.id/cmsq/source/s01/${idSuray.value}${data.value}.mp3`)
-  console.log('result', result.value)
   return result
 }
 
-function cek () {
-  console.log('surah', surah.value)
-  console.log('pageOfItems', pageOfItems.value)
-  // console.log('surah.translations.id.text', surah.value.translations.id.text)
-}
+// function onChangePage (data) {
+//   pageOfItems.value = data
+//   window.smoothscroll()
+// }
 
-function onChangePage (data) {
-  pageOfItems.value = data
-  // window.smoothscroll()
-}
 function getNewSurah () {
   const data = JSON.parse(JSON.stringify(surah.value))
   const obj2 = data.text
   const result2 = Object.entries(obj2)
   newSurah.value = result2 as []
-  console.log('newSurah.value', newSurah.value)
   setTimeout(() => {
     loading.value = false
   }, 500)
